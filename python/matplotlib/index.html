@@ -951,7 +951,7 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  <span class="c1"># Plot some data on the axes.</span>
 </code></pre></div>
 <p>结果如下图：</p>
-<p><img alt="pic1" src="/assets/images/plt/pic1.jpg" /></p>
+<p><img alt="pic1" src="/note/assets/images/plt/pic1.jpg" /></p>
 <p>此外还有另一种写法：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
@@ -966,7 +966,7 @@
 <p>官方建议在面对复杂绘图时使用OO风格 <del>但是像我这种水平也妹有画很复杂的图的时候所以其实大概关系不大（</del></p>
 <p>不过对plt中的各个对象的了解还是很有必要的</p>
 <h3 id="_3">各个对象的含义<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><img alt="pic2" src="/assets/images/plt/pic2.jpg" /></p>
+<p><img alt="pic2" src="/note/assets/images/plt/pic2.jpg" /></p>
 <h4 id="figure"><code>Figure</code><a class="headerlink" href="#figure" title="Permanent link">&para;</a></h4>
 <p>即整个图像。创建方法<code>fig = plt.figure()</code>，可以设置<code>figsize</code>参数调整图像大小。</p>
 <h4 id="axes"><code>Axes</code><a class="headerlink" href="#axes" title="Permanent link">&para;</a></h4>
@@ -998,7 +998,7 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;entry a&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;entry b&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="pic3" src="/assets/images/plt/pic3.jpg" /></p>
+<p><img alt="pic3" src="/note/assets/images/plt/pic3.jpg" /></p>
 <p><del>玩得还挺花是不是（</del></p>
 <h2 id="_5">细节处理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="_6">修改颜色<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
@@ -1024,7 +1024,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 </code></pre></div>
 <p>样式如下图：</p>
-<p><img alt="pic4" src="/assets/images/plt/pic4.jpg" /></p>
+<p><img alt="pic4" src="/note/assets/images/plt/pic4.jpg" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>此处传入的参数还可以改成<code>'go--'</code>，其中'g'为颜色，'o'为标记样式，'--'表示线的形状。既方便又形象有没有~</p>
@@ -1099,7 +1099,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <p>结果如下：</p>
-<p><img alt="pic5" src="/assets/images/plt/pic5.jpg" /></p>
+<p><img alt="pic5" src="/note/assets/images/plt/pic5.jpg" /></p>
 <p>上面的例子基本上就把所有可用的函数都用上了，其实很多也不太常用 <del>所以大多不再细究</del>。</p>
 <p>其中在设置坐标轴的标签时，x和y标签会自动放置，要移动标签可以指定关键字<code>labelpad</code>的参数（单位为pt），或者使用<code>position</code>参数（格式<code>(x, y)</code>）改变位置。</p>
 <div class="admonition warning">
@@ -1126,7 +1126,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <p>结果如下：</p>
-<p><img alt="pic6" src="/assets/images/plt/pic6.jpg" /></p>
+<p><img alt="pic6" src="/note/assets/images/plt/pic6.jpg" /></p>
 <div class="admonition question">
 <p class="admonition-title">如何知道我有哪些字体？</p>
 <p>在终端使用<code>fc-list</code>命令。还可以使用<code>fc-list :lang=zh family</code>命令查看有哪些支持中文的字体。</p>
@@ -1157,7 +1157,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <p>结果如下：</p>
-<p><img alt="pic7" src="/assets/images/plt/pic7.jpg" /></p>
+<p><img alt="pic7" src="/note/assets/images/plt/pic7.jpg" /></p>
 <p>其中<code>axs[1].xaxis.set_ticks(ticks)</code>设置了刻度，<code>axs[1].xaxis.set_major_formatter('{x:1.1f}')</code>使用新式格式字符串设置了刻度标签并设为保留小数点后一位，<code>axs[1].set_xlim(axs[0].get_xlim())</code>设置了x轴的显示范围。</p>
 <p><del>这里其余的就TODO好了（</del></p>
 <h3 id="_17">使用数学表达式<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
@@ -1175,7 +1175,7 @@
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="pic8" src="/assets/images/plt/pic8.jpg" /></p>
+<p><img alt="pic8" src="/note/assets/images/plt/pic8.jpg" /></p>
 <p><code>xy</code>与<code>xytext</code>还可以有其他坐标系可供选择，不再赘述。</p>
 <h3 id="_19">图例<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>使用<code>legend</code>函数。</p>
@@ -1192,7 +1192,7 @@
 <span class="c1"># Place a legend to the right of this smaller subplot.</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;outside upper right&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="pic9" src="/assets/images/plt/pic9.jpg" /></p>
+<p><img alt="pic9" src="/note/assets/images/plt/pic9.jpg" /></p>
 <p>注意，其中"outside right upper"不同于"outside upper right"。示例如下：</p>
 <div class="highlight"><pre><span></span><code><span class="n">ucl</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;lower&#39;</span><span class="p">]</span>
 <span class="n">lcr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]</span>
@@ -1219,7 +1219,7 @@
         <span class="s1">&#39;outside right lower&#39;</span><span class="p">]:</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="pic10" src="/assets/images/plt/pic10.jpg" /></p>
+<p><img alt="pic10" src="/note/assets/images/plt/pic10.jpg" /></p>
 <p>还可以在同一个<code>Axes</code>中使用多个图例。多次调用<code>legend()</code>函数是无效的，你只会在图中看到最新设置的图例。应该将旧的图例实例手动加入到<code>Axes</code>中，具体方法如下：</p>
 <div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">line1</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Line 1&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
@@ -1236,7 +1236,7 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="pic11" src="/assets/images/plt/pic11.jpg" /></p>
+<p><img alt="pic11" src="/note/assets/images/plt/pic11.jpg" /></p>
 <h2 id="_21">更多操作<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
 <h3 id="_22">更多坐标轴<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p>在同一张图表中有两组数量级不同的数据，有时可能需要额外的y轴，或者仅仅需要第二条单位不同的x轴。这种情况下，可以使用<code>twinx</code>以及<code>twiny</code>函数创建一个新的<code>Axes</code>，其中该新<code>Axes</code>与原来的<code>Axes</code>共用其中一条坐标轴。或者直接使用<code>secondary_xaxis</code>或<code>secondary_yaxis</code>添加第二条轴。</p>
@@ -1251,7 +1251,7 @@
 <span class="n">ax4</span> <span class="o">=</span> <span class="n">ax3</span><span class="o">.</span><span class="n">secondary_xaxis</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">functions</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">))</span>
 <span class="n">ax4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Angle [°]&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="pic12" src="/assets/images/plt/pic12.jpg" /></p>
+<p><img alt="pic12" src="/note/assets/images/plt/pic12.jpg" /></p>
 <h3 id="_23">使用颜色映射展示第三维坐标<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <p>暂时仅作展示：</p>
 <div class="highlight"><pre><span></span><code><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
@@ -1275,7 +1275,7 @@
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pc</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;scatter()&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="pic13" src="/assets/images/plt/pic13.jpg" /></p>
+<p><img alt="pic13" src="/note/assets/images/plt/pic13.jpg" /></p>
 <h3 id="axes_1">创建多个<code>Axes</code><a class="headerlink" href="#axes_1" title="Permanent link">&para;</a></h3>
 <p>最基本的用法是多次调用<code>plt.subplot()</code>或<code>fig2, ax = plt.subplots()</code>。也可以使用其他方式实现更复杂的布局。例如使用<code>subplot_mosaic</code>函数可视化地构造布局。</p>
 <div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">axd</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot_mosaic</span><span class="p">([[</span><span class="s1">&#39;upleft&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">],</span>
@@ -1284,7 +1284,7 @@
 <span class="n">axd</span><span class="p">[</span><span class="s1">&#39;lowleft&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;lowleft&#39;</span><span class="p">)</span>
 <span class="n">axd</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="pic" src="/assets/images/plt/pic14.jpg" /></p>
+<p><img alt="pic" src="/note/assets/images/plt/pic14.jpg" /></p>
 <p>还可以用<code>'blank'</code>或者<code>'.'</code>表示空白区域。</p>
 <h1 id="_24">总结<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h1>
 <p>这里大概仅包括了一些基本操作，事实上matplotlib的功能远远不止于此，不过这些部分也已经够大多数情况下的使用了， <del>更多的操作，以后再来探索吧！</del></p>
