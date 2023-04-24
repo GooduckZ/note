@@ -1144,7 +1144,11 @@
 <p>标度则为<span class="arithmatex">\(f(x)=x^\frac{1}{2}\)</span>。</p>
 <p>当需要修改刻度的格式与标签时，建议使用库中的locator与formatter。</p>
 <p><del>这部分基本上也是没啥用，下次再补上好了（</del></p>
-<p>此处最有用的部分应该是设置刻度的有效位数等数据，你可以自己生成一个格式字符串列表然后直接用<code>xaxis.set_ticks</code>和<code>xaxis.set_ticklabels</code>但是官方并不建议这样做，因为这破坏了“交互式导航”并充值了坐标轴的限制范围。</p>
+<div class="admonition info">
+<p class="admonition-title">Update 2023.4.20</p>
+<p><del>在<a href="https://github.com/GooduckZ/ZJU_phylab/blob/main/%E4%B8%87%E7%94%A8%E8%A1%A8%E7%9A%84%E8%AE%BE%E8%AE%A1.py">万用表的设计</a>里头还真用上了🤡</del></p>
+</div>
+<p>此处最有用的部分应该是设置刻度的有效位数等数据，你可以自己生成一个格式字符串列表然后直接用<code>xaxis.set_ticks</code>和<code>xaxis.set_ticklabels</code>但是官方并不建议这样做，因为这破坏了“交互式导航”并重置了坐标轴的限制范围。</p>
 <p>简单的方法是使用格式字符串<code>matplotlib.ticker.StrMethodFormatter</code>（新式格式字符串）或<code>matplotlib.ticker.FormatStrFormatter</code>（旧式'%'格式字符串），其中新式的可以直接用字符串表示 <del>而不需要写前面这么一长串玩意</del>.</p>
 <p>例如：</p>
 <div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
